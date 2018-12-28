@@ -30,7 +30,8 @@ public class MiningPlanet extends Artifact {
     @OPERATION
     public void init(int scenario, int agId) {
         this.agId = agId;
-        initWorld(scenario);
+        initWorld(2);
+ //       initWorld(scenario);
     }
 
     public int getSimId() {

@@ -27,6 +27,7 @@ free.
 
 +free : gsize(_,W,H) & jia.random(RX,W-1) & jia.random(RY,H-1)
    <-   .print("I am going to go near (",RX,",", RY,")");
+   
    		!go_near(RX,RY).
 +free  // gsize is unknown yet
    <- .wait(100); -+free.
@@ -35,6 +36,26 @@ free.
  * it updates the atom "free" so that it can trigger the plan to go to a random
  * location again.
  */
+ 
+ /* new plans for event +!near(_,_) */
+
+// I am near to some location if I am near it
++!near(X,Y) : (pos(AgX,AgY) & jia.neighbour(AgX,AgY,X,Y))
+   <- .print("I am at ", "(",AgX,",", AgY,")", " which is near (",X,",", Y,")");
+      +near(X,Y).
+
+// I am near to some location if the last action was skip
+// (meaning that there are no paths to there)
++!near(X,Y) : pos(AgX,AgY) & last_dir(skip)
+   <- .print("I am at ", "(",AgX,",", AgY,")", " and I can't get to' (",X,",", Y,")");
+      +near(X,Y).
+
++!near(X,Y) : not near(X,Y)
+   <- !next_step(X,Y);
+      !near(X,Y).
++!near(X,Y) : true
+   <- !near(X,Y).
+   
 +near(X,Y) : free <- -+free.
 
 
