@@ -13,10 +13,10 @@
 */
 
 mas helloworld {
-	agent bob : person.asl
 
     agent sample_agent
 
     
 
 }
+
