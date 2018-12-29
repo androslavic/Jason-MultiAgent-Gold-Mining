@@ -15,13 +15,13 @@ mas gold_miners {
     agent miner1 : miner1.asl  {
         focus: mining.m1view
     }
-    agent miner2 : dummy.asl {
+    agent miner2 : miner1.asl {
         focus: mining.m2view
     }
-    agent miner3 : dummy.asl  {
+    agent miner3 : miner1.asl  {
         focus: mining.m3view
     }
-    agent miner4 : dummy.asl  {
+    agent miner4 : miner1.asl  {
         focus: mining.m4view
     }
 
