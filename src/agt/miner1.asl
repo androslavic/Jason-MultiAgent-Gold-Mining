@@ -10,6 +10,7 @@
 /* beliefs */
 last_dir(null). // the last movement I did
 free.
+score(0).
 
 /* rules */
 /* this agent program doesn't have any rules */
@@ -154,6 +155,9 @@ free.
      !pos(0,0);
      !ensure(drop, 0);
      .print("Finish handling ",gold(X,Y));
+     ?score(S);
+     -+score(S+1);
+     .print("Gold in depot ",score(S));
      !!choose_gold.
 
 // if ensure(pick/drop) failed, pursue another gold
@@ -217,3 +221,4 @@ free.
      .abolish(picked(_));
      -+free;
      .print("-- END ",S," --").
+     
