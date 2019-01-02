@@ -158,7 +158,7 @@ score(0).
      .print("Finish handling ",gold(X,Y));
      ?score(S);
      -+score(S+1);
-     .print("Gold in depot ",S);
+     .send(leader,tell,dropped);
      !!choose_gold.
 
 // if ensure(pick/drop) failed, pursue another gold
