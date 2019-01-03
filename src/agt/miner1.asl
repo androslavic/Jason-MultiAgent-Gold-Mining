@@ -212,8 +212,18 @@ score(0).
      !calc_gold_distance(R,RD).
 +!calc_gold_distance([_|R],RD)
   <- !calc_gold_distance(R,RD).
+  
+  
+  
+  /* new plans for event +winning(_,_) */
 
++winning(A,S)[source(leader)] : .my_name(A)
+   <-  -winning(A,S+1);
+       .print("I am the greatest!!!").
 
++winning(A,S+1)[source(leader)] : true
+   <-  -winning(A,S).
+  
 /* end of a simulation */
 
 +end_of_simulation(S,_) : true
